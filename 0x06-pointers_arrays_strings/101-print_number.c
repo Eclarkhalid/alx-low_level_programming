@@ -11,7 +11,7 @@ if (n < 0)
 _putchar('-');
 num = -n;
 }
-else 
+else
 {
 num = n;
 }
