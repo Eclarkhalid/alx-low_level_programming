@@ -1,50 +1,30 @@
 #include <stdlib.h>
+#include <string.h>
 #include <stdio.h>
 #include "lists.h"
 /**
- * main - check the code for printing all the elements of a listint_t list
- *
+ * main - check the code
+ * 
  * Return: Always 0.
  */
 int main(void)
 {
-listint_t *head = NULL;
-listint_t *new_node = NULL;
-size_t node_count = 0;
-new_node = malloc(sizeof(listint_t));
-if (new_node == NULL)
+listint_t *head;
+listint_t *new;
+listint_t hello = {8, NULL};
+size_t n;
+head = &hello;
+new = malloc(sizeof(listint_t));
+if (new == NULL)
 {
-printf("Failed to allocate memory for new node.\n");
-return (EXIT_FAILURE);
+printf("Error\n");
+return (1);
 }
-new_node->n = 0;
-new_node->next = NULL;
-head = new_node;
-new_node = malloc(sizeof(listint_t));
-if (new_node == NULL)
-{
-printf("Failed to allocate memory for new node.\n");
-return (EXIT_FAILURE);
-}
-new_node->n = 1;
-new_node->next = head;
-head = new_node;
-new_node = malloc(sizeof(listint_t));
-if (new_node == NULL)
-{
-printf("Failed to allocate memory for new node.\n");
-return (EXIT_FAILURE);
-}
-new_node->n = 2;
-new_node->next = head;
-head = new_node;
-node_count = print_listint(head);
-printf("Number of nodes in list: %lu\n", node_count);
-while (head != NULL)
-{
-new_node = head->next;
-free(head);
-head = new_node;
-}
-return (EXIT_SUCCESS);
+new->n = 9;
+new->next = head;
+head = new;
+n = print_listint(head);
+printf("-> %lu elements\n", n);
+free(new);
+return (0);
 }
